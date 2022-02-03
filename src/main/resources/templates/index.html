@@ -9,7 +9,7 @@
 <body>
 <h1>Users list</h1>
 <br/>
-<a href="addUser.html">Add user</a>
+<a th:href="addUser">Add user</a>
 <br/>
 <br/>
 <div>
@@ -19,12 +19,16 @@
             <th>Name</th>
             <th>Surname</th>
             <th>Age</th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
         <tr th:each="user : ${users}">
             <td> <a th:href="@{/{id}(id=${user.getId()})}" th:utext="${user.getId()}">...</a></td>
             <td th:utext="${user.getName()}">...</td>
             <td th:utext="${user.getSurname()}">...</td>
             <td th:utext="${user.getAge()}">...</td>
+            <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
+            <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
         </tr>
     </table>
 </div>
